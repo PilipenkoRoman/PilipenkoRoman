@@ -35,12 +35,18 @@ public class Homework01 {
         driver.findElement(By.cssSelector("[id = 'Password']")).sendKeys("1234");
         driver.findElement(By.cssSelector(".login [type = 'submit']")).click();
 
-        assertEquals(driver.getTitle(), "PITER CHAILOVSKII");
+        assertEquals(driver.findElement(By.cssSelector(".profile-photo")).getText(), "PITER CHAILOVSKII");
         assertEquals(driver.getTitle(), "Home Page");
 
+
+
         WebElement mainTitle=driver.findElement(By.cssSelector("h3.main-title"));
-        assertEquals(mainTitle.getText(),"EPAM FRAMEWORK WISHES...");
-        assertEquals(mainTitle.getText(),"LOREM IPSUM...");
+        assertEquals(mainTitle.getText(),"EPAM FRAMEWORK WISHES…");
+        //assertEquals(mainTitle.getText(),"LOREM IPSUM…");
+
+        driver.findElement(By.linkText("Home"));
+
+
 
 
         driver.close();
