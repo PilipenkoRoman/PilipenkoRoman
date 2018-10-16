@@ -7,7 +7,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 import static java.lang.System.setProperty;
 import static org.testng.Assert.assertEquals;
@@ -38,7 +40,9 @@ public class Homework01 {
 
         assertEquals(driver.findElement(By.cssSelector(".profile-photo")).getText(), "PITER CHAILOVSKII");
         assertEquals(driver.getTitle(), "Home Page");
-
+        assertEquals(driver.findElements(By.cssSelector("header .nav > li")).stream()
+                        .map(WebElement::getText).collect(Collectors.toList()),
+                Arrays.asList("HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS"));
 
 
         WebElement mainTitle=driver.findElement(By.cssSelector("h3.main-title"));
