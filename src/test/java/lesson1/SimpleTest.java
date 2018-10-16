@@ -11,7 +11,7 @@ public class SimpleTest {
     public void simpleTest(){
 
     WebDriver driver=new ChromeDriver();
-  driver.navigate().to("https://epam.github.io/JDI/index.html");
+    driver.navigate().to("https://epam.github.io/JDI/index.html");
 
 
 }
