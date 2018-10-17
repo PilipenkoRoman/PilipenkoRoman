@@ -28,33 +28,35 @@ public class Homework01 {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-
-        //2 Navigate
         driver.navigate().to("https://epam.github.io/JDI/index.html");
 
-        //3 Assert Title
+
+        //2 Assert Title
         assertEquals(driver.getTitle(), "Home Page");
 
-        //4 Login
+
+        //3 Login
         driver.findElement(cssSelector(".profile-photo")).click();
         driver.findElement(cssSelector("[id = 'Name']")).sendKeys("epam");
         driver.findElement(cssSelector("[id = 'Password']")).sendKeys("1234");
         driver.findElement(cssSelector(".login [type = 'submit']")).click();
 
+
+        //4 Name is displayed and equals to expected result
         assertEquals(driver.findElement(cssSelector(".profile-photo")).getText(), "PITER CHAILOVSKII");
+
+
+        //5 Browser title equals "Home Page"
         assertEquals(driver.getTitle(), "Home Page");
 
-        //6
+
+        //6 Menu buttons are displayed and have proper texts
         assertEquals(driver.findElements(cssSelector("header .nav > li")).stream()
                         .map(WebElement::getText).collect(Collectors.toList()),
                 Arrays.asList("HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS"));
 
 
-        //driver.findElement(By.linkText("Home"));
-
-
-        //7
-        // WebElement element = driver.findElement (By.cssSelector("div.benefit-icon").
+        //7 Assert that there are 4 images on the Index Page and they are displayed	4 images	Images are displayed
         List<WebElement> elements = driver.findElements(cssSelector(".benefit"));
         assertEquals(4, elements.size());
         for (WebElement webel : elements
@@ -62,14 +64,12 @@ public class Homework01 {
             assertTrue(webel.isDisplayed());
         }
 
-
-        //8 Texts are displayed and equal to expected
+        //todo 8  как тэг <br> преобразуется\переносы строк
+        // Assert that there are 4 texts on the Index Page under icons and they have proper text	4 texts below of each image	Texts are displayed and equal to expected
         List<WebElement> textElements = driver.findElements(cssSelector(".benefit-txt"));
-//        assertEquals(4, elements.size());
-
 //          assertEquals(textElements.get(0).getText(), "To include good practices and ideas from successful EPAM project");
 //          assertEquals(textElements.get(1).getText(), "To be flexible and<br>customizable");
-        assertEquals(textElements.get(2).getText(), "To be multiplatform");
+            assertEquals(textElements.get(2).getText(), "To be multiplatform");
 //          assertEquals(textElements.get(3).getText(), "Already have good base<br>(about 20 internal and<br>some external projects),<br>wish to get more…");
 
 
