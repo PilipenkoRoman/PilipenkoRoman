@@ -64,13 +64,13 @@ public class Homework01 {
             assertTrue(webel.isDisplayed());
         }
 
-        //todo 8  как тэг <br> преобразуется\переносы строк
-        // Assert that there are 4 texts on the Index Page under icons and they have proper text	4 texts below of each image	Texts are displayed and equal to expected
+
+        //8 Assert that there are 4 texts on the Index Page under icons and they have proper text	4 texts below of each image	Texts are displayed and equal to expected
         List<WebElement> textElements = driver.findElements(cssSelector(".benefit-txt"));
-//          assertEquals(textElements.get(0).getText(), "To include good practices and ideas from successful EPAM project");
-//          assertEquals(textElements.get(1).getText(), "To be flexible and<br>customizable");
+        assertEquals(textElements.get(0).getText(), "To include good practices\nand ideas from successful\nEPAM project");
+        assertEquals(textElements.get(1).getText(), "To be flexible and\ncustomizable");
         assertEquals(textElements.get(2).getText(), "To be multiplatform");
-//          assertEquals(textElements.get(3).getText(), "Already have good base<br>(about 20 internal and<br>some external projects),<br>wish to get more…");
+        assertEquals(textElements.get(3).getText(), "Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more…");
 
 
         //9 Assert a text of the main header	"EPAM FRAMEWORK WISHES…" and "LOREM IPSUM..."	Text is displayed and equals to expected result
