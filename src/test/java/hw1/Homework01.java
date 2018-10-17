@@ -69,7 +69,7 @@ public class Homework01 {
         List<WebElement> textElements = driver.findElements(cssSelector(".benefit-txt"));
 //          assertEquals(textElements.get(0).getText(), "To include good practices and ideas from successful EPAM project");
 //          assertEquals(textElements.get(1).getText(), "To be flexible and<br>customizable");
-            assertEquals(textElements.get(2).getText(), "To be multiplatform");
+        assertEquals(textElements.get(2).getText(), "To be multiplatform");
 //          assertEquals(textElements.get(3).getText(), "Already have good base<br>(about 20 internal and<br>some external projects),<br>wish to get more…");
 
 
