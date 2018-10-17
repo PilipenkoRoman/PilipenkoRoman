@@ -70,10 +70,10 @@ public class Homework01 {
 
 
         //9 Assert a text of the main header	"EPAM FRAMEWORK WISHES…" and "LOREM IPSUM..."	Text is displayed and equals to expected result
-        WebElement mainTitle = driver.findElement(cssSelector("h3.main-title"));
-        assertEquals(mainTitle.getText(), "EPAM FRAMEWORK WISHES…");
-        WebElement mainSubTitle = driver.findElement(cssSelector("p.main-txt"));
-        assertEquals(mainSubTitle.getText(), "LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE CILLUM DOLORE EU FUGIAT NULLA PARIATUR.");
+                assertEquals(driver.findElement(cssSelector("h3.main-title"))
+                        .getText(), "EPAM FRAMEWORK WISHES…");
+                assertEquals(driver.findElement(cssSelector("p.main-txt"))
+                        .getText(), "LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE CILLUM DOLORE EU FUGIAT NULLA PARIATUR.");
 
 
         //10 Assert that there is the iframe in the center of page		The iframe exists
