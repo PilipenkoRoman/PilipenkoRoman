@@ -49,9 +49,7 @@ public class Homework01 {
                 Arrays.asList("HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS"));
 
 
-        WebElement mainTitle = driver.findElement(By.cssSelector("h3.main-title"));
-        assertEquals(mainTitle.getText(), "EPAM FRAMEWORK WISHES…");
-        //assertEquals(mainTitle.getText(),"LOREM IPSUM…");
+
 
         //driver.findElement(By.linkText("Home"));
 
@@ -66,7 +64,7 @@ public class Homework01 {
         }
 
 
-        //8
+        //8 Texts are displayed and equal to expected
        List<WebElement> textElements = driver.findElements(By.cssSelector(".benefit-txt"));
 //        assertEquals(4, elements.size());
 
@@ -76,7 +74,19 @@ public class Homework01 {
 //          assertEquals(textElements.get(3).getText(), "Already have good base<br>(about 20 internal and<br>some external projects),<br>wish to get more…");
 
 
+        //9 Text is displayed and equals to expected result
+        WebElement mainTitle = driver.findElement(By.cssSelector("h3.main-title"));
+        assertEquals(mainTitle.getText(), "EPAM FRAMEWORK WISHES…");
+        WebElement mainSubTitle = driver.findElement(By.cssSelector("p.main-txt"));
+        assertEquals(mainSubTitle.getText(),"LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE CILLUM DOLORE EU FUGIAT NULLA PARIATUR.");
 
+        //10 The iframe exists
+        assertTrue(driver.findElement(By.id("iframe")).isDisplayed());
+
+        //11 The logo exists
+        assertTrue(driver.findElement(By.cssSelector(".epam-logo")).isDisplayed());
+
+        //12
 
 
 //        textElements.forEach(webelTxt -> assertEquals(webelTxt.getText(), ("To be multiplatform"||"")));
