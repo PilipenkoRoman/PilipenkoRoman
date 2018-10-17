@@ -57,12 +57,8 @@ public class Homework01 {
 
 
         //7 Assert that there are 4 images on the Index Page and they are displayed	4 images	Images are displayed
-        List<WebElement> elements = driver.findElements(cssSelector(".benefit"));
-        assertEquals(4, elements.size());
-        for (WebElement webel : elements
-        ) {
-            assertTrue(webel.isDisplayed());
-        }
+        assertEquals(4, driver.findElements(cssSelector(".benefits .icons-benefit")).stream()
+                .filter(WebElement::isDisplayed).count());
 
 
         //8 Assert that there are 4 texts on the Index Page under icons and they have proper text	4 texts below of each image	Texts are displayed and equal to expected
