@@ -19,7 +19,7 @@ import static org.testng.Assert.assertTrue;
 public class TestClass03 {
 
     //FIXME 2 goes to the smoke,remaining one goes to the regression
-    @Test(invocationCount = 3,threadPoolSize = 3,groups = {"Smoke","Regression"})
+    @Test(groups = {"Smoke","Regression"})
     public void simpleTest03() {
         setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
 

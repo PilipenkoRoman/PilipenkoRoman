@@ -18,7 +18,7 @@ import static org.testng.Assert.assertTrue;
 
 public class TestClass01 {
 
-    @Test(invocationCount = 3,threadPoolSize = 3,groups = {"Smoke"})
+    @Test(groups = {"Smoke"})
     public void simpleTest01() {
         setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
 

@@ -17,7 +17,7 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class TestClass04 {
-    @Test(invocationCount = 3,threadPoolSize = 3,groups = {"Smoke","Regression"})
+    @Test(groups = {"Smoke","Regression"})
     public void simpleTest04() {
         setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
 
