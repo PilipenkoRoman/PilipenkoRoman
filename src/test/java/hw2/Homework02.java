@@ -37,8 +37,6 @@ public class Homework02 {
     public void dataProviderTest(String actual, String expected) {
         assertEquals(actual, expected);
     }
-
-
 }
 
 
