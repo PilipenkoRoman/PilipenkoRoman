@@ -83,11 +83,12 @@ public class Homework01 {
         //11 The logo exists
         //FIXME найти лого во фрейме, текущий вариант не проходит
         //assertTrue(driver.findElement(By.id("iframe")).findElement(By.cssSelector(".epam-logo")).isDisplayed());
-
+        driver.switchTo().frame(0);
 
         //12 Switch to original window back		Driver has focus on the original window
-        Actions action = new Actions(driver);
-        action.moveToElement(driver.findElement(By.cssSelector(".main-content")));
+//        Actions action = new Actions(driver);
+//        action.moveToElement(driver.findElement(By.cssSelector(".main-content")));
+        driver.switchTo().defaultContent();
 
 
         //todo 13 Text is displayed and equals to expected result
