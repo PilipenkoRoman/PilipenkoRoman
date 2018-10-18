@@ -16,7 +16,7 @@ import static org.testng.Assert.assertEquals;
 
 public class Homework02 {
 
-    @DataProvider(name = "correctData", parallel = true)
+    @DataProvider(parallel = true)
     public Object[][] correctData() {
         setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
@@ -33,7 +33,7 @@ public class Homework02 {
         };
     }
 
-    @Test(dataProvider = "correctData", threadPoolSize = 4)
+    @Test(dataProvider = "correctData")
     public void dataProviderTest(String actual, String expected) {
         assertEquals(actual, expected);
     }

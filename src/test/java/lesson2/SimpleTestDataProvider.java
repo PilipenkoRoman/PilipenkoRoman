@@ -1,5 +1,7 @@
-package lesson1;
+package lesson2;
 
+import DataProviders.DataProviders;
+import base.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,16 +10,21 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-import static java.lang.System.setProperty;
 import static org.testng.Assert.assertEquals;
 
-public class SimpleTest {
+public class SimpleTestDataProvider extends TestBase {
 
-    @Test
-    public void simpleTest() {
-        setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
 
-        //1 Open BR
+
+
+
+
+
+
+    @Test(dataProvider = "simpleDataProvider",dataProviderClass = DataProviders.class)
+    public void simpleTest(String s,int i) {
+
+//1 Open BR
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
@@ -37,6 +44,10 @@ public class SimpleTest {
         WebElement mainTitle = driver.findElement(By.cssSelector("h3.main-title"));
         assertEquals(mainTitle.getText(), "EPAM FRAMEWORK WISHES…");
 
+        //5 Close BR
         driver.close();
+        System.out.println(s);
+        System.out.println(i);
+
     }
 }
