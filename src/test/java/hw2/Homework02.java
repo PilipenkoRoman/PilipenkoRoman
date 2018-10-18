@@ -10,18 +10,43 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import static java.lang.System.setProperty;
 import static org.openqa.selenium.By.cssSelector;
 import static org.testng.Assert.assertEquals;
 
 public class Homework02 {
-//
+
+    @DataProvider(name = "correctData", parallel = true)
+    public Object[][] correctData() {
+        setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        driver.navigate().to("https://epam.github.io/JDI/index.html");
+        List<WebElement> textElements = driver.findElements(cssSelector(".benefit-txt"));
+
+        return new Object[][]{
+                {textElements.get(0).getText(), "To include good practices\nand ideas from successful\nEPAM project"},
+                {textElements.get(1).getText(), "To be flexible and\ncustomizable"},
+                {textElements.get(2).getText(), "To be multiplatform"},
+                {textElements.get(3).getText(), "Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more…"}
+        };
+    }
+
+    @Test(dataProvider = "correctData", threadPoolSize = 4)
+    public void dataProviderTest(String actual, String expected) {
+        assertEquals(actual, expected);
+    }
+
+
+    //
 //   @DataProvider(name = "test1")
 //   @DataProvider(name = "test2")
 //   @DataProvider(name = "test3")
 //   @DataProvider(name = "test4")
     // @Test(dataProvider = "dp1" ,threadPoolSize=3,invocationCount=1)
 
-    public static WebDriver driver = new ChromeDriver();
+//    public static WebDriver driver = new ChromeDriver();
 
 //    @DataProvider(name="dp",parallel = true)
 //    public Object[][] dp() {
@@ -72,7 +97,7 @@ public class Homework02 {
 //////                        "Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more…"));
 //////
 
-    }
+}
 
 
 
