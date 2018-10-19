@@ -55,6 +55,8 @@ public class Homework01 {
                 Arrays.asList("HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS"));
 
 
+
+
         //7 Assert that there are 4 images on the Index Page and they are displayed	4 images	Images are displayed
         assertEquals(driver.findElements(cssSelector(".benefits .icons-benefit")).stream()
                         .filter(WebElement::isDisplayed).count(),
