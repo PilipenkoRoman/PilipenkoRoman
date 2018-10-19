@@ -1,5 +1,6 @@
 package lesson2;
 
+
 import DataProviders.DataProviders;
 import base.TestBase;
 import org.openqa.selenium.By;
@@ -14,17 +15,10 @@ import static org.testng.Assert.assertEquals;
 
 public class SimpleTestDataProvider extends TestBase {
 
+    @Test(dataProvider = "simpleDataProvider", dataProviderClass = DataProviders.class)
+    public void simpleTest(String s, int i) {
 
-
-
-
-
-
-
-    @Test(dataProvider = "simpleDataProvider",dataProviderClass = DataProviders.class)
-    public void simpleTest(String s,int i) {
-
-//1 Open BR
+        //1 Open BR
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
@@ -46,8 +40,7 @@ public class SimpleTestDataProvider extends TestBase {
 
         //5 Close BR
         driver.close();
-        System.out.println(s);
-        System.out.println(i);
-
+        System.out.println("String: " + s);
+        System.out.println("Integer: " + i);
     }
 }

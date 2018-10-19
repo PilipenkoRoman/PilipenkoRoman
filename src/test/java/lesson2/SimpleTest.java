@@ -5,22 +5,19 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.util.concurrent.TimeUnit;
 
+import static java.lang.System.setProperty;
 import static org.testng.Assert.assertEquals;
 
 public class SimpleTest extends TestBase {
 
     private WebDriver driver;
 
-
     @BeforeMethod(alwaysRun = true)
     public void beforeMethod() {
-
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
@@ -31,10 +28,8 @@ public class SimpleTest extends TestBase {
         driver.close();
     }
 
-    @Test(groups = "Groups1")
+    @Test(groups = "Group1")
     public void simpleTest() {
-
-
         //2 Navigate
         driver.navigate().to("https://epam.github.io/JDI/index.html");
 
@@ -49,7 +44,5 @@ public class SimpleTest extends TestBase {
 
         WebElement mainTitle = driver.findElement(By.cssSelector("h3.main-title"));
         assertEquals(mainTitle.getText(), "EPAM FRAMEWORK WISHES…");
-
-
     }
 }
