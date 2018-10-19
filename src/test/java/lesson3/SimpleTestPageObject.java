@@ -17,12 +17,12 @@ import static org.testng.Assert.assertEquals;
 
 public class SimpleTestPageObject extends TestBase {
 
-    private WebDriver driver;
+    private WebDriver driver = new ChromeDriver();  ;
     private HomePage  homePage= PageFactory.initElements(driver,HomePage.class);
 
     @BeforeMethod(alwaysRun = true)
     public void beforeMethod() {
-        driver = new ChromeDriver();
+
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
     }
