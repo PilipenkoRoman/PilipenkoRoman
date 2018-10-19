@@ -37,7 +37,7 @@ public class Exercise3 {
     @BeforeMethod(alwaysRun = true)
     public void beforeMethod() {
         //1 open BR
-
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         driver.navigate().to("https://epam.github.io/JDI/index.html");
@@ -50,8 +50,7 @@ public class Exercise3 {
 
     @BeforeClass
     public void beforeClass() {
-        driver = new ChromeDriver();
-
+        System.out.println(System.currentTimeMillis());
 
     }
 
