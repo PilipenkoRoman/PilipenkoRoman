@@ -12,6 +12,7 @@ public class HomePage {
     @FindBy(css = "[id = 'Name']")
     private WebElement login;
 
+
     @FindBy(css = "[id = 'Password']")
     private WebElement password;
 
