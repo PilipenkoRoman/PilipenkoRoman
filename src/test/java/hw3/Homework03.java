@@ -38,16 +38,16 @@ public class Homework03 {
     @Test
     public void simpleTest() {
 
-        //2 Navigate
+        //1 Navigate
         homePage.open(driver);
 
-        //3 Assert Title
+        //2 Assert Title
         homePage.checkTitle(driver);
 
-        //4 Login
+        //3&4 Login
         homePage.login(PITER_CHALOVSKII.login, PITER_CHALOVSKII.password);
 
-        //5 Check main title
+        //5
         homePage.checkTitle(driver);
 
         //6 Menu buttons are displayed and have proper texts
@@ -60,10 +60,13 @@ public class Homework03 {
         homePage.checkTexts(driver);
 
         //9
+        homePage.checkHeader(driver);
 
         //10
+        homePage.checkIframe(driver);
 
         //11
+        homePage.checkLogo(driver);
 
         //12
         homePage.switchToDefaultWindow(driver);
@@ -75,11 +78,13 @@ public class Homework03 {
         homePage.checkLink(driver);
 
         //15
+        homePage.checkLeftSection(driver);
 
         //16
+        homePage.checkFooter(driver);
 
         //17
-
+        homePage.closeBR(driver);
     }
 
 }
