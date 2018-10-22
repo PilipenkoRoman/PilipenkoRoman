@@ -71,10 +71,6 @@ public class HomePage {
         submit.click();
     }
 
-//    public String getTitle(WebDriver driver){
-//        return driver.getTitle();
-//    }
-
     //12 Switch to original window back		Driver has focus on the original window
     public void switchToDefaultWindow(WebDriver driver) {
         driver.switchTo().defaultContent();
