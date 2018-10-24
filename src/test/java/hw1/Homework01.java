@@ -23,11 +23,24 @@ public class Homework01 {
     public void simpleTest() {
         setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
 
+        System.out.println("2с:56:dc:78:8d:94, 30:5a:3a:53:cb:d6, f4:6d:04:2c:29:e8, 90:e6:ba:25:26:cd, d8:cb:8a:36:7f:42, 94:de:80:d9:30:04, 70:85:c2:5c:b0:1c, 30:85:a9:ad:da:5d".toUpperCase());
+
+
+
         //1 Open BR
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         driver.navigate().to("https://epam.github.io/JDI/index.html");
+
+        //2.5
+        //todo
+
+//    private SelenideElement serviceMenu;
+//
+//    @FindBy(xpath = "//span[contains(.,'Dates')]")
+//    private SelenideElement datesMenu;
+
 
 
         //2 Assert Title
@@ -39,6 +52,16 @@ public class Homework01 {
         driver.findElement(cssSelector("#Name")).sendKeys("epam");
         driver.findElement(cssSelector("#Password")).sendKeys("1234");
         driver.findElement(cssSelector(".login [type = 'submit']")).click();
+
+
+//        //3.5
+//        driver.findElement(cssSelector(".sub hide-menu")).click();
+//    //    driver.findElement(By.xpath("//span[contains(.,'Dates')]")).click();
+//        try {
+//            Thread.sleep(1000000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
 
 
         //4 Name is displayed and equals to expected result
@@ -61,7 +84,6 @@ public class Homework01 {
         assertEquals(driver.findElements(cssSelector(".benefits .icons-benefit")).stream()
                         .filter(WebElement::isDisplayed).count(),
                 4);
-
 
         //8 Assert that there are 4 texts on the Index Page under icons and they have proper text	4 texts below of each image	Texts are displayed and equal to expected
         assertEquals(driver.findElements(cssSelector(".benefit-txt")).stream()
@@ -101,7 +123,6 @@ public class Homework01 {
         WebElement subHeader = driver.findElement(cssSelector("h3:not(.main-title)"));
         assertTrue(subHeader.isDisplayed());
         assertEquals(subHeader.getText(), "JDI GITHUB");
-
 
 
         //14 Assert that JDI GITHUB is a link and has a proper URL	https://github.com/epam/JDI	Link is displayed and has proper value
