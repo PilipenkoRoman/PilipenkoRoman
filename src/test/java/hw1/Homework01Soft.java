@@ -24,7 +24,6 @@ public class Homework01Soft {
         setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
         SoftAssert softAssert = new SoftAssert();
 
-
         //1 Open BR
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
