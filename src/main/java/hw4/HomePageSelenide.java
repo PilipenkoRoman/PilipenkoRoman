@@ -120,29 +120,36 @@ public class HomePageSelenide {
 //    }
 
 
+    public ArrayList<WebElement> getSliders(){
+        return new ArrayList<>(getWebDriver().findElements(By.xpath("//*[@class='ui-slider-handle ui-state-default ui-corner-all']")));
+    }
+
 
     public void setRange0to100() {
         List<WebElement> webElementList = getWebDriver().findElements(By.xpath("//*[@class='ui-slider-handle ui-state-default ui-corner-all']"));
         WebElement left = webElementList.get(0);
         WebElement right =webElementList.get(1);
         Actions builder = new Actions(getWebDriver());
-        builder.dragAndDropBy(left,Integer.MIN_VALUE,0).perform();
+        builder.dragAndDropBy(ge,Integer.MIN_VALUE,0).perform();
         builder.dragAndDropBy(right,0,0).perform();
-    }
-
-    public void setRange0to0() {
+//        builder.build();
+//    }
+//
+//    public void setRange0to0() {
 //        ElementsCollection selenideElements = $$(xpath("//*[@class='ui-slider-handle ui-state-default ui-corner-all']"));
 //        SelenideElement rightSlider = selenideElements.get(0);
 //        SelenideElement leftSlider = selenideElements.get(1);
 //        actions().dragAndDropBy(leftSlider, -100, 0).perform();
 //        actions().dragAndDropBy(rightSlider, -100, 0).perform();
-        List<WebElement> webElementList = getWebDriver().findElements(By.xpath("//*[@class='ui-slider-handle ui-state-default ui-corner-all']"));
-        WebElement left = webElementList.get(0);
-        WebElement right =webElementList.get(1);
-        Actions builder = new Actions(getWebDriver());
-        builder.dragAndDropBy(left,Integer.MIN_VALUE,0).perform();
-        builder.dragAndDropBy(right,Integer.MIN_VALUE,0).perform();
-
+//        List<WebElement> webElementList = getWebDriver().findElements(By.xpath("//*[@class='ui-slider-handle ui-state-default ui-corner-all']"));
+//        WebElement left = webElementList.get(0);
+//        WebElement right =webElementList.get(1);
+//        Actions builder = new Actions(getWebDriver());
+        builder.dragAndDropBy(left,0,0).perform();
+        builder.dragAndDropBy(right,-1000,0).perform();
+        builder.dragAndDropBy(left,1000,0).perform();
+        builder.dragAndDropBy(right,1000,0).perform();
+        builder.build();
     }
 
     public void setRange100to100() {
@@ -152,7 +159,7 @@ public class HomePageSelenide {
         Actions builder = new Actions(getWebDriver());
         builder.dragAndDropBy(left,1000,0).perform();
         builder.dragAndDropBy(right,1000,0).perform();
-
+        builder.build();
     }
 
     public void setRange30to70() {
