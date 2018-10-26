@@ -4,10 +4,12 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import com.sun.deploy.association.Action;
 import cucumber.api.java.eo.Se;
 import enums.Ranges;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -103,10 +105,17 @@ public class HomePageSelenide {
         submit.click();
     }
 
+    private static WebElement rightSlider;
+    private static WebElement leftSlider;
+    private static Actions builder;
 
     public void openDatesPage() {
         serviceMenu.click();
         datesPage.click();
+        List<WebElement> listWeb=new ArrayList<>(getWebDriver().findElements(By.xpath("//*[@class='ui-slider-handle ui-state-default ui-corner-all']")));
+        leftSlider=listWeb.get(0);
+        rightSlider=listWeb.get(1);
+        builder=new Actions(getWebDriver());
     }
 
 //    public void setRange(int left,int right){
@@ -120,56 +129,74 @@ public class HomePageSelenide {
 //    }
 
 
-    public ArrayList<WebElement> getSliders(){
-        return new ArrayList<>(getWebDriver().findElements(By.xpath("//*[@class='ui-slider-handle ui-state-default ui-corner-all']")));
-    }
+
 
 
     public void setRange0to100() {
-        List<WebElement> webElementList = getWebDriver().findElements(By.xpath("//*[@class='ui-slider-handle ui-state-default ui-corner-all']"));
-        WebElement left = webElementList.get(0);
-        WebElement right =webElementList.get(1);
-        Actions builder = new Actions(getWebDriver());
-        builder.dragAndDropBy(ge,Integer.MIN_VALUE,0).perform();
-        builder.dragAndDropBy(right,0,0).perform();
-//        builder.build();
-//    }
-//
-//    public void setRange0to0() {
-//        ElementsCollection selenideElements = $$(xpath("//*[@class='ui-slider-handle ui-state-default ui-corner-all']"));
-//        SelenideElement rightSlider = selenideElements.get(0);
-//        SelenideElement leftSlider = selenideElements.get(1);
-//        actions().dragAndDropBy(leftSlider, -100, 0).perform();
-//        actions().dragAndDropBy(rightSlider, -100, 0).perform();
-//        List<WebElement> webElementList = getWebDriver().findElements(By.xpath("//*[@class='ui-slider-handle ui-state-default ui-corner-all']"));
-//        WebElement left = webElementList.get(0);
-//        WebElement right =webElementList.get(1);
+//        List<WebElement> webElementList =getSliders();
+//        WebElement leftSlider = webElementList.get(0);
+//        WebElement rightSlider =webElementList.get(1);
+//        getSliders();
 //        Actions builder = new Actions(getWebDriver());
-        builder.dragAndDropBy(left,0,0).perform();
-        builder.dragAndDropBy(right,-1000,0).perform();
-        builder.dragAndDropBy(left,1000,0).perform();
-        builder.dragAndDropBy(right,1000,0).perform();
-        builder.build();
+        builder.dragAndDropBy(leftSlider,Integer.MIN_VALUE,0).perform();
+        builder.dragAndDropBy(rightSlider,0,0).perform();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+//                builder.build();
+    }
+
+    public void setRange0to0() {
+//        getSliders();
+        Actions builder = new Actions(getWebDriver());
+        builder.dragAndDropBy(leftSlider, -1000, 0).perform();
+        builder.dragAndDropBy(rightSlider, -2000, 0).perform();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+//        builder.build();
+//        builder.dragAndDropBy(left,1000,0).perform();
+//        builder.dragAndDropBy(right,1000,0).perform();
+//        try {
+//            Thread.sleep(3000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }}
     }
 
     public void setRange100to100() {
-        List<WebElement> webElementList = getWebDriver().findElements(By.xpath("//*[@class='ui-slider-handle ui-state-default ui-corner-all']"));
-        WebElement left = webElementList.get(0);
-        WebElement right =webElementList.get(1);
-        Actions builder = new Actions(getWebDriver());
-        builder.dragAndDropBy(left,1000,0).perform();
-        builder.dragAndDropBy(right,1000,0).perform();
-        builder.build();
+    //    getSliders();
+//        Actions builder = new Actions(getWebDriver());
+        builder.dragAndDropBy(rightSlider,2000,0).perform();
+        builder.dragAndDropBy(leftSlider,1000,0).perform();
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+//        builder.build();
+        //        builder.build();
     }
 
     public void setRange30to70() {
-        List<WebElement> webElementList = getWebDriver().findElements(By.xpath("//*[@class='ui-slider-handle ui-state-default ui-corner-all']"));
-        WebElement left = webElementList.get(0);
-        WebElement right = webElementList.get(1);
-        Actions builder = new Actions(getWebDriver());
-        builder.dragAndDropBy(left, -259, 0).perform();
-        builder.dragAndDropBy(right, -111, 0).perform();
-        builder.build();
+//        List<WebElement> webElementList = getWebDriver().findElements(By.xpath("//*[@class='ui-slider-handle ui-state-default ui-corner-all']"));
+//        WebElement left = webElementList.get(0);
+//        WebElement right = webElementList.get(1);
+//        Actions builder = new Actions(getWebDriver());
+        builder.dragAndDropBy(rightSlider, -650, 0).perform();
+        builder.dragAndDropBy(leftSlider, -111, 0).perform();
+//        builder.build();
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -230,8 +257,8 @@ public class HomePageSelenide {
     }
 
     public void check100to100() {
-        $(logsWindow).shouldHave(text(TO_100.s));
         $(logsWindow).shouldHave(text(FROM_100.s));
+        $(logsWindow).shouldHave(text(TO_100.s));
     }
 
     public void check30to70() {
