@@ -116,6 +116,8 @@ public class HomePageSelenide {
         leftSlider=listWeb.get(0);
         rightSlider=listWeb.get(1);
         builder=new Actions(getWebDriver());
+        System.out.println(rightSlider.getLocation().getX());
+        System.out.println(leftSlider.getLocation().getX());
     }
 
 //    public void setRange(int left,int right){
@@ -128,7 +130,13 @@ public class HomePageSelenide {
 //        builder.dragAndDropBy(right,0,0).perform();
 //    }
 
+    //3.75+-5
+    //1000=0.075/1 -офсет
 
+public void setRange(int leftPos,int rightPos){
+    (leftPos<(leftSlider.getLocation().getX()/3.75))?leftPos=-leftPos:
+
+}
 
 
 
@@ -138,10 +146,17 @@ public class HomePageSelenide {
 //        WebElement rightSlider =webElementList.get(1);
 //        getSliders();
 //        Actions builder = new Actions(getWebDriver());
-        builder.dragAndDropBy(leftSlider,Integer.MIN_VALUE,0).perform();
-        builder.dragAndDropBy(rightSlider,0,0).perform();
+        System.out.println(rightSlider.getLocation().getX());
+        System.out.println(leftSlider.getLocation().getX());
+        builder.dragAndDropBy(leftSlider,-10000,0).perform();
+        System.out.println(leftSlider.getLocation().getX());
+
+        System.out.println(rightSlider.getLocation().getX());
+        builder.dragAndDropBy(rightSlider,10000,0).perform();
+        System.out.println(rightSlider.getLocation().getX());
+        System.out.println("right");
         try {
-            Thread.sleep(3000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -152,10 +167,13 @@ public class HomePageSelenide {
     public void setRange0to0() {
 //        getSliders();
         Actions builder = new Actions(getWebDriver());
+        System.out.println("asd");
+        System.out.println(leftSlider.getLocation().getX());
         builder.dragAndDropBy(leftSlider, -1000, 0).perform();
         builder.dragAndDropBy(rightSlider, -2000, 0).perform();
+        System.out.println(leftSlider.getLocation().getX());
         try {
-            Thread.sleep(3000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -163,7 +181,7 @@ public class HomePageSelenide {
 //        builder.dragAndDropBy(left,1000,0).perform();
 //        builder.dragAndDropBy(right,1000,0).perform();
 //        try {
-//            Thread.sleep(3000);
+//            Thread.sleep(1000);
 //        } catch (InterruptedException e) {
 //            e.printStackTrace();
 //        }}
@@ -189,7 +207,8 @@ public class HomePageSelenide {
 //        WebElement left = webElementList.get(0);
 //        WebElement right = webElementList.get(1);
 //        Actions builder = new Actions(getWebDriver());
-        builder.dragAndDropBy(rightSlider, -650, 0).perform();
+        System.out.println(rightSlider.getLocation().getX());
+        builder.dragAndDropBy(rightSlider, rightSlider.getLocation().getX()-650, 0).perform();
         builder.dragAndDropBy(leftSlider, -111, 0).perform();
 //        builder.build();
         try {
