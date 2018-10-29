@@ -1,4 +1,4 @@
-package hw2;
+package hw2.Exercise02;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -16,7 +16,7 @@ import static org.openqa.selenium.By.cssSelector;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class TestClass01 {
+public class SmokeTests {
 
     @Test(groups = {"Smoke"})
     public void simpleTest01() {

@@ -1,4 +1,4 @@
-package hw2;
+package hw2.Exercise01;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -6,7 +6,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -14,7 +13,7 @@ import static java.lang.System.setProperty;
 import static org.openqa.selenium.By.cssSelector;
 import static org.testng.Assert.assertEquals;
 
-public class Homework02 {
+public class lHomework02 {
 
     @DataProvider(parallel = true)
     public Object[][] correctData() {

@@ -11,10 +11,10 @@
 
 
         <classes>
-           <class name="hw2.TestClass01"/>
-           <class name="hw2.TestClass02"/>
-           <class name="hw2.TestClass03"/>
-           <class name="hw2.TestClass04"/>
+           <class name="hw2.Exercise02.SmokeTests"/>
+           <class name="hw2.Exercise02.RegressionTests"/>
+           <class name="hw2.Exercise02.SmokeAndRegressionTests"/>
+           <class name="hw2.Exercise02.SmokeAndRegressionSimultaneously"/>
         </classes>
 
 

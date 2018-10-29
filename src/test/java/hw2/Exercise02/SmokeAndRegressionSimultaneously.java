@@ -1,4 +1,4 @@
-package hw2;
+package hw2.Exercise02;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -16,11 +16,9 @@ import static org.openqa.selenium.By.cssSelector;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class TestClass03 {
-
-
-    @Test(groups = {"Smoke"})
-        public void simpleTest01() {
+public class SmokeAndRegressionSimultaneously {
+    @Test(groups = {"Smoke","Regression"})
+      public void simpleTest01() {
 
             setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
 
@@ -123,8 +121,8 @@ public class TestClass03 {
 
 
 
-        @Test(groups = {"Smoke"})
-        public void simpleTest02() {
+        @Test(groups = {"Smoke","Regression"})
+    public void simpleTest02() {
 
                 setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
 
@@ -227,7 +225,7 @@ public class TestClass03 {
 
 
 
-        @Test(groups = {"Regression"})
+        @Test(groups = {"Smoke","Regression"})
         public void simpleTest03() {
 
                 setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
@@ -328,4 +326,5 @@ public class TestClass03 {
                 //17 Close Browser		Browser is closed
                 driver.quit();
         }
+
 }

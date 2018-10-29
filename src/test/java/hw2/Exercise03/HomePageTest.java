@@ -1,4 +1,4 @@
-package hw2;
+package hw2.Exercise03;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,7 +17,7 @@ import static org.openqa.selenium.By.cssSelector;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class Exercise3 {
+public class HomePageTest {
 
     private WebDriver driver;
     private long time;
