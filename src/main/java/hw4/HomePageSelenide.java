@@ -130,8 +130,7 @@
 ////        builder.dragAndDropBy(right,0,0).perform();
 ////    }
 //
-//    //3.75+-5
-//    //1000=0.075/1 -офсет
+//    //
 //
 //public void setRange(int leftPos,int rightPos){
 //    (leftPos<(leftSlider.getLocation().getX()/3.75))?leftPos=-leftPos:
