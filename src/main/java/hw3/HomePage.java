@@ -72,9 +72,6 @@ public class HomePage {
         submit.click();
     }
 
-    public void checkProfileName(String profileName) {
-        assertEquals(profileButton.getText(), profileName);
-    }
 
     public void switchToDefaultWindow(WebDriver driver) {
         driver.switchTo().defaultContent();
@@ -82,6 +79,9 @@ public class HomePage {
 
     //================================checks===================================
 
+    public void checkProfileName(String profileName) {
+        assertEquals(profileButton.getText(), profileName);
+    }
 
     public void checkTitle(WebDriver driver) {
         assertEquals(driver.getTitle(), "Home Page");
