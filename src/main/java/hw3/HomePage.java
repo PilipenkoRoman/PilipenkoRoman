@@ -9,7 +9,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.openqa.selenium.By.cssSelector;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -48,6 +47,16 @@ public class HomePage {
 
     @FindBy(css = "iframe")
     private List<WebElement> iframe;
+
+    @FindBy(css = "h3:not(.main-title)")
+    private WebElement link;
+
+
+    @FindBy(css = "[name=navigation-sidebar]")
+    private List<WebElement> leftSection;
+
+    @FindBy(css = "footer")
+    private List<WebElement> footer;
 
 
     //================================methods===================================
@@ -120,24 +129,22 @@ public class HomePage {
     }
 
     public void checkSubHeaderText(WebDriver driver) {
-        WebElement subHeader = driver.findElement(cssSelector("h3:not(.main-title)"));
-        assertTrue(subHeader.isDisplayed());
-        assertEquals(subHeader.getText(), "JDI GITHUB");
+        assertTrue(link.isDisplayed());
+        assertEquals(link.getText(), "JDI GITHUB");
     }
 
     public void checkLink(WebDriver driver) {
-        WebElement subHeader = driver.findElement(cssSelector("h3:not(.main-title)"));
-        List<WebElement> subHeaderLink = subHeader.findElements(By.linkText("JDI GITHUB"));
+        List<WebElement> subHeaderLink = link.findElements(By.linkText("JDI GITHUB"));
         assertTrue(!subHeaderLink.isEmpty());
         assertEquals(subHeaderLink.get(0).getAttribute("href"), "https://github.com/epam/JDI");
     }
 
     public void checkLeftSection(WebDriver driver) {
-        assertTrue(driver.findElements(By.cssSelector("[name=navigation-sidebar]")).stream().anyMatch(WebElement::isDisplayed));
+        assertTrue(leftSection.stream().anyMatch(WebElement::isDisplayed));
     }
 
     public void checkFooter(WebDriver driver) {
-        assertTrue(driver.findElements(By.cssSelector("footer")).stream().anyMatch(WebElement::isDisplayed));
+        assertTrue(footer.stream().anyMatch(WebElement::isDisplayed));
     }
 }
 
