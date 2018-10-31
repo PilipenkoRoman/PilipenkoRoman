@@ -52,10 +52,8 @@ public class HomePage {
 
     //================================methods===================================
 
-
     public void open(WebDriver driver) {
         driver.navigate().to("https://epam.github.io/JDI/index.html");
-
     }
 
     public void login(String name, String passwd) {
