@@ -28,16 +28,16 @@ public class HomePage {
     private WebElement submit;
 
     @FindBy(css = "header .nav > li")
-    private WebElement menuButtons;
+    private List<WebElement> menuButtons;
 
     @FindBy(css = ".epam-logo")
-    private WebElement logo;
+    private List<WebElement> logo;
 
     @FindBy(css = ".benefits .icons-benefit")
-    private WebElement icons;
+    private List<WebElement> icons;
 
     @FindBy(css = ".benefit-txt")
-    private WebElement texts;
+    private List<WebElement> texts;
 
     @FindBy(css = "h3.main-title")
     private WebElement mainHeader;
@@ -47,7 +47,7 @@ public class HomePage {
 
 
     @FindBy(css = "iframe")
-    private WebElement iframe;
+    private List<WebElement> iframe;
 
 
     //================================methods===================================
@@ -79,19 +79,19 @@ public class HomePage {
     }
 
     public void checkButtons(WebDriver driver) {
-        assertEquals(driver.findElements(cssSelector(String.valueOf(menuButtons))).stream()
+        assertEquals(menuButtons.stream()
                         .map(WebElement::getText).collect(Collectors.toList()),
                 Arrays.asList("HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS"));
     }
 
     public void checkImages(WebDriver driver) {
-        assertEquals(driver.findElements(cssSelector(String.valueOf(icons))).stream()
+        assertEquals(icons.stream()
                         .filter(WebElement::isDisplayed).count(),
                 4);
     }
 
     public void checkTexts(WebDriver driver) {
-        assertEquals(driver.findElements(cssSelector(String.valueOf(texts))).stream()
+        assertEquals(texts.stream()
                         .map(WebElement::getText).collect(Collectors.toList()),
                 Arrays.asList("To include good practices\nand ideas from successful\nEPAM project",
                         "To be flexible and\ncustomizable",
@@ -100,9 +100,9 @@ public class HomePage {
     }
 
     public void checkHeader(WebDriver driver) {
-        assertEquals(driver.findElement(cssSelector(String.valueOf(mainHeader))).getText(),
+        assertEquals(mainHeader.getText(),
                 "EPAM FRAMEWORK WISHES…");
-        assertEquals(driver.findElement(cssSelector(String.valueOf(mainText))).getText(),
+        assertEquals(mainText.getText(),
                 "LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT, " +
                         "SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. " +
                         "UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS " +
@@ -111,12 +111,12 @@ public class HomePage {
     }
 
     public void checkIframe(WebDriver driver) {
-        assertTrue(driver.findElements(By.id(String.valueOf(iframe))).stream().anyMatch(WebElement::isDisplayed));
+        assertTrue(iframe.stream().anyMatch(WebElement::isDisplayed));
     }
 
     public void checkLogo(WebDriver driver) {
         driver.switchTo().frame(0);
-        assertTrue(driver.findElements(By.cssSelector(String.valueOf(logo))).stream().anyMatch(WebElement::isDisplayed));
+        assertTrue(logo.stream().anyMatch(WebElement::isDisplayed));
     }
 
     public void checkSubHeaderText(WebDriver driver) {
