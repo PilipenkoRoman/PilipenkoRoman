@@ -134,7 +134,7 @@ public class Homework01 {
     assertEquals(driver.getTitle(), "Home Page");
 
     //6 Menu buttons are displayed and have proper texts
-    assertEquals(driver.findElements(cssSelector(String.valueOf("header .nav > li"))).
+    assertEquals(driver.findElements(cssSelector(("header .nav > li"))).
 
     stream().
 
