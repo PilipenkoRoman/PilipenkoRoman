@@ -3,12 +3,12 @@ package enums;
 public enum Color {
 
 
-RED("Colors: value changed to Red"),
-GREEN("Colors: value changed to Green"),
-BLUE("Colors: value changed to Blue"),
-YELLOW("Colors: value changed to Yellow");
+    RED("Red"),
+    GREEN("Green"),
+    BLUE("Blue"),
+    YELLOW("Yellow");
 
-    public String colorType ;
+    public String colorType;
 
     Color(String colorType) {
         this.colorType = colorType;

@@ -20,7 +20,6 @@ public class ServiceTestPageObject extends SelenideTestBase {
 
     private WebDriver driver;
     private hw4.ServicePage homePage;
-    // private hw4.ServicePage homePageSelenide;
 
     @BeforeSuite
     public void beforeSuite() {
@@ -48,7 +47,6 @@ public class ServiceTestPageObject extends SelenideTestBase {
     @Test
     public void testPageObject() {
 
-        //setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
 
 //1 	Open test site by URL
         homePage.open();
@@ -61,7 +59,7 @@ public class ServiceTestPageObject extends SelenideTestBase {
 
 //4	    Assert User name in the left-top side of screen that user is logged
         homePage.checkProfileName(PITER_CHALOVSKII.profileName);
-//
+
 //5	    Click on "Service" subcategory in the header and check that drop down contains options
         homePage.checkButtons();
 
@@ -105,6 +103,5 @@ public class ServiceTestPageObject extends SelenideTestBase {
 //18	Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox. 
         homePage.checkLogs(WATER);
         homePage.checkLogs(WIND);
-
     }
 }
