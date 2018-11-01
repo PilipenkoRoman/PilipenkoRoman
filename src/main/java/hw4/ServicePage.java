@@ -3,7 +3,6 @@ package hw4;
 import base.SelenideTestBase;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.Arrays;
@@ -31,8 +30,9 @@ public class ServicePage extends SelenideTestBase {
 //    @FindBy(css = "body > header > div > nav > ul.uui-navigation.nav.navbar-nav.m-l8 > li.dropdown.open > ul > li")
 //    private List<SelenideElement> menuButtons;
 
-//    /html/body/header/div/nav/ul
-    @FindBy(css = "body > header > div > nav > ul.uui-navigation.nav.navbar-nav.m-l8 > li.dropdown.open > ul > li")
+    //    /html/body/header/div/nav/ul
+//    @FindBy(css = "body > header > div > nav > ul.uui-navigation.nav.navbar-nav.m-l8 > li.dropdown.open > ul > li")
+    @FindBy(css = "header .dropdown-menu > li")
     private List<SelenideElement> menuButtons;
 
     @FindBy(css = ".epam-logo")
@@ -68,11 +68,40 @@ public class ServicePage extends SelenideTestBase {
     private SelenideElement serviceMenu;
 
     @FindBy(css = "#mCSB_1_container > ul > li:nth-child(3) > a")
-    private List<SelenideElement> leftMenuButtons;
+    private SelenideElement leftMenuServiceButton;
 
 
     @FindBy(css = "li.dropdown.open > ul > li [href='different-elements.html']")
     private SelenideElement differentElementsPage;
+
+
+    @FindBy(css = "#mCSB_1_container > ul > li:nth-child(3) > ul > li")
+    private List<SelenideElement> leftMenuElements;
+
+    @FindBy(css="body > div > div.uui-main-container.page-inside > main > div.main-content > div > .checkbox-row .label-checkbox")
+    private List<SelenideElement> checkboxElements;
+
+    @FindBy(css="body > div > div.uui-main-container.page-inside > main > div.main-content > div > .checkbox-row .label-radio")
+    private List<SelenideElement> radioElements;
+
+    @FindBy(css="body > div > div.uui-main-container.page-inside > main > div.main-content > div > div.colors > select")
+    private SelenideElement dropdownElement;
+
+//    @FindBy(css="body > div > div.uui-main-container.page-inside > main > div.main-content > div > div.colors > select")
+//    private List<SelenideElement> buttons;
+
+    @FindBy(css="body > div > div.uui-main-container.page-inside > main > div.main-content > div > button")
+    private SelenideElement firstButton;
+
+    @FindBy(css="body > div > div.uui-main-container.page-inside > main > div.main-content > div > input")
+    private SelenideElement secondButton;
+
+
+    @FindBy(css="#mCSB_1")
+    private List<SelenideElement> leftSection;
+
+    @FindBy(css="body > div > div.uui-side-bar.right-fix-panel.mCustomScrollbar._mCS_2.mCS_no_scrollbar")
+    private SelenideElement rightSection;
 
 
     //================================methods===================================
@@ -105,8 +134,17 @@ public class ServicePage extends SelenideTestBase {
     public void openDifferentElementsPage() {
         serviceMenu.click();
         differentElementsPage.click();
+
+
     }
 
+
+    public void selectCheckboxes(){
+        checkboxElements.get(0).click();
+        checkboxElements.get(2).click();
+
+
+    }
 
     //================================checks===================================
 
@@ -114,26 +152,53 @@ public class ServicePage extends SelenideTestBase {
         assertEquals(profileButton.getText(), profileName);
     }
 
-    public void checkTitle(WebDriver driver) {
+    public void checkTitle() {
         assertEquals(getWebDriver().getTitle(), "Home Page");
 
     }
 
     public void checkButtons() {
         serviceMenu.click();
+//        List<String> list = new ArrayList<>();
+//        for (SelenideElement menuButton : menuButtons) {
+//            String text = menuButton.getText();
+//            list.add(text);
+//        }
+////        assertTrue(
+//        System.out.println(list.containsAll(
+//                Arrays.asList("SUPPORT", "DATES", "COMPLEX TABLE", "SIMPLE TABLE","TABLE WITH PAGES", "DIFFERENT ELEMENTS")));
+////        , "TABLES WITH PAGES", "DIFFERENT ELEMENTS"
+////        , "DATES", "COMPLEX TABLE", "SIMPLE TABLE", )
         assertTrue(menuButtons.stream().map(SelenideElement::getText).collect(Collectors.toList()).containsAll(
-                Arrays.asList("SUPPORT", "DATES", "COMPLEX TABLE", "SIMPLE TABLE", "TABLES WITH PAGES", "DIFFERENT ELEMENTS")));
-//
+                Arrays.asList("SUPPORT", "DATES", "COMPLEX TABLE", "SIMPLE TABLE", "TABLE WITH PAGES", "DIFFERENT ELEMENTS")));
 
-        //        assertEquals(menuButtons.stream()
-//                        .map(WebElement::getText).collect(Collectors.toList()),
-//                Arrays.asList("Support", "Dates", "Complex Table", "Simple Table", "Tables With Pages", "Different Elements"));
     }
 
     public void checkLeftSectionButtons() {
-        assertTrue(leftMenuButtons.stream().map(SelenideElement::getText).collect(Collectors.toList()).containsAll(
-                Arrays.asList("SUPPORT", "DATES", "COMPLEX TABLE", "SIMPLE TABLE", "TABLES WITH PAGES", "DIFFERENT ELEMENTS")));
-
+        leftMenuServiceButton.click();
+        List<String> list = leftMenuElements.stream().map(SelenideElement::getText).collect(Collectors.toList());
+        assertTrue(list.containsAll(
+                Arrays.asList("Support", "Dates", "Complex Table", "Simple Table", "Table with pages", "Different elements")));
     }
+
+public void checkDifferentElements(){
+        assertTrue(checkboxElements.stream().allMatch(SelenideElement::isDisplayed));
+        assertTrue(radioElements.stream().allMatch(SelenideElement::isDisplayed));
+        assertTrue(dropdownElement.isDisplayed());
+        assertTrue(firstButton.isDisplayed());
+        assertTrue(secondButton.isDisplayed());
+}
+
+public void checkLeftSection(){
+    assertTrue(leftSection.
+            stream().
+            anyMatch(SelenideElement::isDisplayed));
+}
+
+    public void checkRightSection(){
+        assertTrue(rightSection.isDisplayed());
+    }
+
+
 }
 

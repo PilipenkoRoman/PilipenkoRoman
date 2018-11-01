@@ -16,7 +16,7 @@ public class ServiceTestPageObject extends SelenideTestBase {
 
     private WebDriver driver;
     private hw4.ServicePage homePage;
-   // private hw4.ServicePage homePageSelenide;
+    // private hw4.ServicePage homePageSelenide;
 
     @BeforeSuite
     public void beforeSuite() {
@@ -50,7 +50,7 @@ public class ServiceTestPageObject extends SelenideTestBase {
         homePage.open();
 
 //2	    Assert Browser title
-        homePage.checkTitle(driver);
+        homePage.checkTitle();
 
 //3 	Perform login
         homePage.login(PITER_CHALOVSKII.login, PITER_CHALOVSKII.password);
@@ -62,19 +62,22 @@ public class ServiceTestPageObject extends SelenideTestBase {
         homePage.checkButtons();
 
 //6	    Click on Service subcategory in the left section and check that drop down contains options
-//        homePage.checkLeftSectionButtons();
+        homePage.checkLeftSectionButtons();
 
 //7	    Open through the header menu Service -> Different Elements Page
         homePage.openDifferentElementsPage();
 
 //8	    Check interface on Different elements page, it contains all needed elements
-
+        homePage.checkDifferentElements();
 
 //9	    Assert that there is Right Section
+        homePage.checkRightSection();
 
 //10	Assert that there is Left Section
+        homePage.checkLeftSection();
 
 //11	Select checkboxes
+        homePage.selectCheckboxes();
 
 //12	Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox. 
 
