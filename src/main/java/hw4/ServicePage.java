@@ -3,12 +3,16 @@ package hw4;
 import base.SelenideTestBase;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import enums.CheckboxConditions;
+import enums.Color;
+import enums.Metal;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -78,30 +82,34 @@ public class ServicePage extends SelenideTestBase {
     @FindBy(css = "#mCSB_1_container > ul > li:nth-child(3) > ul > li")
     private List<SelenideElement> leftMenuElements;
 
-    @FindBy(css="body > div > div.uui-main-container.page-inside > main > div.main-content > div > .checkbox-row .label-checkbox")
+    @FindBy(css = "body > div > div.uui-main-container.page-inside > main > div.main-content > div > .checkbox-row .label-checkbox")
     private List<SelenideElement> checkboxElements;
 
-    @FindBy(css="body > div > div.uui-main-container.page-inside > main > div.main-content > div > .checkbox-row .label-radio")
+    @FindBy(css = "body > div > div.uui-main-container.page-inside > main > div.main-content > div > .checkbox-row .label-radio")
     private List<SelenideElement> radioElements;
 
-    @FindBy(css="body > div > div.uui-main-container.page-inside > main > div.main-content > div > div.colors > select")
+    @FindBy(css = "body > div > div.uui-main-container.page-inside > main > div.main-content > div > div.colors > select")
     private SelenideElement dropdownElement;
 
 //    @FindBy(css="body > div > div.uui-main-container.page-inside > main > div.main-content > div > div.colors > select")
 //    private List<SelenideElement> buttons;
 
-    @FindBy(css="body > div > div.uui-main-container.page-inside > main > div.main-content > div > button")
+    @FindBy(css = "body > div > div.uui-main-container.page-inside > main > div.main-content > div > button")
     private SelenideElement firstButton;
 
-    @FindBy(css="body > div > div.uui-main-container.page-inside > main > div.main-content > div > input")
+    @FindBy(css = "body > div > div.uui-main-container.page-inside > main > div.main-content > div > input")
     private SelenideElement secondButton;
 
 
-    @FindBy(css="#mCSB_1")
+    @FindBy(css = "#mCSB_1")
     private List<SelenideElement> leftSection;
 
-    @FindBy(css="body > div > div.uui-side-bar.right-fix-panel.mCustomScrollbar._mCS_2.mCS_no_scrollbar")
+    @FindBy(css = "body > div > div.uui-side-bar.right-fix-panel.mCustomScrollbar._mCS_2.mCS_no_scrollbar")
     private SelenideElement rightSection;
+
+
+    @FindBy(css = "#mCSB_2_container > section:nth-child(1) > div.info-panel-body.info-panel-body-log > div")
+    private SelenideElement elementsLogWindow;
 
 
     //================================methods===================================
@@ -139,13 +147,19 @@ public class ServicePage extends SelenideTestBase {
     }
 
 
-    public void selectCheckboxes(){
+    public void selectCheckboxes() {
         checkboxElements.get(0).click();
         checkboxElements.get(2).click();
-
-
     }
 
+    public void selectRadio() {
+        radioElements.get(3).click();
+    }
+
+    public void selectDropdown(Color colorName){
+        dropdownElement.click();//-
+        dropdownElement.selectOption(colorName.toString());
+    }
     //================================checks===================================
 
     public void checkProfileName(String profileName) {
@@ -181,24 +195,41 @@ public class ServicePage extends SelenideTestBase {
                 Arrays.asList("Support", "Dates", "Complex Table", "Simple Table", "Table with pages", "Different elements")));
     }
 
-public void checkDifferentElements(){
+    public void checkDifferentElements() {
         assertTrue(checkboxElements.stream().allMatch(SelenideElement::isDisplayed));
         assertTrue(radioElements.stream().allMatch(SelenideElement::isDisplayed));
         assertTrue(dropdownElement.isDisplayed());
         assertTrue(firstButton.isDisplayed());
         assertTrue(secondButton.isDisplayed());
-}
+    }
 
-public void checkLeftSection(){
-    assertTrue(leftSection.
-            stream().
-            anyMatch(SelenideElement::isDisplayed));
-}
+    public void checkLeftSection() {
+        assertTrue(leftSection.
+                stream().
+                anyMatch(SelenideElement::isDisplayed));
+    }
 
-    public void checkRightSection(){
+    public void checkRightSection() {
         assertTrue(rightSection.isDisplayed());
     }
 
+    public void checkLogs(CheckboxConditions checkcon) {
+        elementsLogWindow.shouldHave(text(checkcon.elementName));
+        elementsLogWindow.shouldHave(text(checkcon.elementName));
+    }
+
+    public void checkRadio(Metal metalName){
+        elementsLogWindow.shouldHave(text(metalName.metalType));
+    }
+
+    public void chechDropdown(Color color){
+        elementsLogWindow.shouldNotBe(text(color.colorType));
+
+    }
+
+
+
 
 }
+
 

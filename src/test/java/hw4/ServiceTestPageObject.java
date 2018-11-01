@@ -9,6 +9,10 @@ import org.testng.annotations.*;
 import java.util.concurrent.TimeUnit;
 
 import static com.codeborne.selenide.Selenide.page;
+import static enums.CheckboxConditions.WATER;
+import static enums.CheckboxConditions.WIND;
+import static enums.Color.YELLOW;
+import static enums.Metal.SELEN;
 import static enums.Users.PITER_CHALOVSKII;
 
 
@@ -80,19 +84,27 @@ public class ServiceTestPageObject extends SelenideTestBase {
         homePage.selectCheckboxes();
 
 //12	Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox. 
+        homePage.checkLogs(WATER);
+        homePage.checkLogs(WIND);
 
 //13	Select radio
+        homePage.selectRadio();
 
 //14	Assert that for radiobutton there is a log row and value is corresponded to the status of radiobutton. 
+        homePage.checkRadio(SELEN);
 
 //15	Select in dropdown
+        homePage.selectDropdown(YELLOW);
 
 //16	Assert that for dropdown there is a log row and value is corresponded to the selected value. 
+        homePage.chechDropdown(YELLOW);
 
 //17	Unselect and assert checkboxes
+        homePage.selectCheckboxes();
 
 //18	Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox. 
-
+        homePage.checkLogs(WATER);
+        homePage.checkLogs(WIND);
 
     }
 }
