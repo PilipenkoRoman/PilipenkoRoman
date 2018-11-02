@@ -16,8 +16,8 @@ import java.util.stream.Collectors;
 
 import static java.lang.System.setProperty;
 import static org.openqa.selenium.By.cssSelector;
-import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
+import static org.testng.AssertJUnit.assertEquals;
 
 public class Homework01 {
 

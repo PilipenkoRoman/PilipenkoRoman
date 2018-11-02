@@ -36,7 +36,7 @@ public class ServiceTestPageObject extends SelenideTestBase {
     @BeforeMethod
     public void beforeMethod() {
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
     }
 
     @AfterMethod(alwaysRun = true)
@@ -45,7 +45,7 @@ public class ServiceTestPageObject extends SelenideTestBase {
     }
 
     @Test
-    public void testPageObject() {
+    public void testServicePageObject() {
 
 
 //1 	Open test site by URL
