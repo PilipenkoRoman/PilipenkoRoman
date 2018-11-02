@@ -49,31 +49,35 @@ public class DatesTestPageObject {
 //        homePageSelenide.findDate();
 
 //        6	Using drag-and-drop set Range sliders. left sliders - the most left position, right slider - the most rigth position
-        homePageSelenide.setRange0to100();
+        homePageSelenide.setRange(0,100);
+//        homePageSelenide.setRange(0,80);
+//        homePageSelenide.setRange(30,100);
+//        homePageSelenide.setRange(15,60);
+//        homePageSelenide.setRange(25,75);
 
-//        7	Assert that for "From" and "To" sliders there are logs rows with corresponding values
-//        homePageSelenide.check0to100();
+      //  7	Assert that for "From" and "To" sliders there are logs rows with corresponding values
+      homePageSelenide.checkRange(0,100);
 
 //        8	Using drag-and-drop set Range sliders. left sliders - the most left position, right slider - the most left position.
-        homePageSelenide.setRange0to0();
+        homePageSelenide.setRange(0,0);
 
 //        9	Assert that for "From" and "To" sliders there are logs rows with corresponding values
-//        homePageSelenide.check0to0();
+     homePageSelenide.checkRange(0,0);
 
 //        10	Using drag-and-drop set Range sliders. left sliders - the most rigth position, right slider - the most rigth position.
-        homePageSelenide.setRange100to100();
+        homePageSelenide.setRange(100,100);
 
 //        11	Assert that for "From" and "To" sliders there are logs rows with corresponding values
-//        homePageSelenide.check100to100();
+    homePageSelenide.checkRange(100,100);
 
 //        12	Using drag-and-drop set Range sliders.
-        homePageSelenide.setRange30to70();
+        homePageSelenide.setRange(30,70);
 
 //        13	Assert that for "From" and "To" sliders there are logs rows with corresponding values
-//        homePageSelenide.check30to70();
-
-//        //   setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
-//        //2 Navigate
+     homePageSelenide.checkRange(30,70);
+//
+////        //   setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
+////        //2 Navigate
 //        homePageSelenide.openPage();
 //
 //        //3 Assert Title
